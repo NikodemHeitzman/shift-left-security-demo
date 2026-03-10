@@ -1,0 +1,12 @@
+rules:
+  - id: ast-bypass-sqli
+    pattern-regex: f"SELECT .*\{.*\}.*"
+    message: "SQL Injection: direct use of f-strings in database queries!"
+    languages: [python]
+    severity: ERROR
+
+  - id: ast-bypass-xss
+    pattern-regex: return f"<.*\{.*\}.*>"
+    message: "XSS: Returning unfiltered variables directly to HTML tags!"
+    languages: [python]
+    severity: ERROR

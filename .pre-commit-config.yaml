@@ -10,3 +10,12 @@ repos:
     rev: v8.18.2
     hooks:
       - id: gitleaks
+
+  - repo: local
+    hooks:
+      - id: semgrep
+        name: semgrep
+        entry: semgrep scan --config p/python --config p/fastapi --error
+        language: system
+        types: [ python ]
+        pass_filenames: false
