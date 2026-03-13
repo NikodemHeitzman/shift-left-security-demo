@@ -35,4 +35,4 @@ jobs:
         run: pip install semgrep
 
       - name: Run Custom Security Rules
-        run: semgrep scan --config semgrep-local.yaml --error
+        run: semgrep scan --config security-rules/semgrep-local.yaml --error
