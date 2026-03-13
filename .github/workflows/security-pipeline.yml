@@ -1,0 +1,38 @@
+name: DevSecOps Pipeline
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+      branches: [ "master", "main" ]
+jobs:
+  secret-scanning:
+    name: Gitleaks Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2.3.0
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  sast-scanning:
+    name: Semgrep Custom SAST
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Semgrep
+        run: pip install semgrep
+
+      - name: Run Custom Security Rules
+        run: semgrep scan --config semgrep-local.yaml --error
