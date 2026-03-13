@@ -12,4 +12,4 @@ jobs:
 
   build-and-scan-image:
     needs: run-security-scans
-    uses: ./.github/workflows/security.yml
+    uses: ./.github/workflows/build.yml
