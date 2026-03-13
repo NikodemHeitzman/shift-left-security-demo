@@ -1,0 +1,15 @@
+name: Main Orchestrator
+
+permissions: read-all
+
+on:
+  push:
+    branches: ["master", "main"]
+
+jobs:
+  run-security-scans:
+    uses: ./.github/workflows/security.yml
+
+  build-and-scan-image:
+    needs: run-security-scans
+    uses: ./.github/workflows/security.yml
