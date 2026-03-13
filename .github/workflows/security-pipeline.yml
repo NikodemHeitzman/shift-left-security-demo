@@ -1,4 +1,7 @@
 name: DevSecOps Pipeline
+
+permissions: read-all
+
 on:
   push:
     branches: [ "master", "main" ]
@@ -36,3 +39,16 @@ jobs:
 
       - name: Run Custom Security Rules
         run: semgrep scan --config security-rules/semgrep-local.yaml --error
+
+  iac-scanning:
+    name: Checkov IaC Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: '.'
+          skip_path: venv

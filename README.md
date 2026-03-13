@@ -8,7 +8,7 @@
 
 ## 🎯 Project Overview
 
-This repository demonstrates a **Mid-level DevSecOps engineering approach** to securing a software development lifecycle (SDLC). It features a vulnerable-by-design Python (FastAPI) application and implements a strict, multi-layered security pipeline. 
+This repository demonstrates a **Mid-level DevSecOps engineering approach** to securing a software development lifecycle (SDLC). It features a vulnerable-by-design Python (FastAPI) application and implements a strict, multi-layered security pipeline.
 
 The goal is to showcase the **"Shift-Left"** methodology: catching vulnerabilities, leaked secrets, and misconfigurations as early as the developer's local machine, all the way through automated CI/CD quality gates, and enforcing Policy-as-Code.
 
@@ -52,7 +52,7 @@ To demonstrate remediation skills, the project documents the evolution of the ap
 * Removed unnecessary build tools from the final image using multi-stage builds.
 
 > **Trivy Scan Comparison**
-> 
+>
 > | Scan Stage | CRITICAL | HIGH | MEDIUM | LOW |
 > | :--- | :---: | :---: | :---: | :---: |
 > | **Initial (Root/Heavy)** | 🔴 24 | 🟠 89 | 🟡 140 | 🔵 30 |
