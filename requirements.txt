@@ -63,7 +63,6 @@ rpds-py==0.30.0
 ruamel.yaml==0.19.1
 ruamel.yaml.clib==0.2.14
 semantic-version==2.10.0
-semgrep==1.154.0
 sse-starlette==3.3.2
 starlette==0.52.1
 tomli==2.0.2
