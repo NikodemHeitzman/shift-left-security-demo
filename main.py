@@ -1,6 +1,7 @@
 import sqlite3
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+import html
 
 def init_db():
     conn = sqlite3.connect("test.db")
@@ -32,11 +33,11 @@ async def root():
 async def get_user(username: str):
     conn = sqlite3.connect("test.db")
     cursor = conn.cursor()
-    query = f"SELECT * FROM users WHERE username = '{username}'"
-    cursor.execute(query)
+    cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
     result = cursor.fetchone()
     return {"username": result}
 
 @app.get("/search", response_class=HTMLResponse)
 async def search(query: str):
-    return f"<h1>Search results for: {query}</h1>"
+    safe_query = html.escape(query)
+    return "<h1>Search results for: " + safe_query + "</h1>"
